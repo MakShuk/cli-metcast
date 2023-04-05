@@ -1,0 +1,18 @@
+{
+  "name": "cli-metcast",
+  "version": "0.0.1",
+  "description": "",
+  "main": "./build/weather.js",
+  "type": "module",
+  "bin": {
+    "weather": "weather.js"
+  },
+  "scripts": {
+    "st": "node build/weather.js"
+  },
+  "author": "Maksim Shuklin",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.15.11"
+  }
+}
