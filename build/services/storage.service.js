@@ -15,6 +15,10 @@ import { promises } from 'fs';
   console.log(extname(filePath));
   console.log(relative(filePath, dirname(filePath))); */
 const filePath = join(homedir(), 'weather-data-json');
+export const TOKEN_DICTIONARY = {
+    token: 'token',
+    city: 'city',
+};
 export const saveKeyValue = (key, value) => __awaiter(void 0, void 0, void 0, function* () {
     let data = {};
     if (yield isExist(filePath)) {
@@ -24,7 +28,7 @@ export const saveKeyValue = (key, value) => __awaiter(void 0, void 0, void 0, fu
     data[key] = value;
     yield promises.writeFile(filePath, JSON.stringify(data));
 });
-export const getKeyValue = (key) => __awaiter(void 0, void 0, void 0, function* () {
+export const getApiKey = (key) => __awaiter(void 0, void 0, void 0, function* () {
     if (yield isExist(filePath)) {
         const file = yield promises.readFile(filePath);
         const data = JSON.parse(file.toString());
