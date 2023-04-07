@@ -11,8 +11,7 @@ export const saveToken = async (token: string | boolean): Promise<void> => {
   }
   try {
     await saveKeyValue(TOKEN_DICTIONARY.token, token);
-
-    printSuccess('Token Saved');
+    console.log(`Token saved: ${token}`);
   } catch (e: any) {
     printError(e.message);
   }

@@ -1,4 +1,3 @@
-import https from 'https';
 import { getApiKey, TOKEN_DICTIONARY } from './storage.service.js';
 import axios from 'axios';
 
