@@ -11,10 +11,13 @@ interface Coordinates {
   lon: number;
 }
 
-export const getLocation = async (city: string = 'Murmansk'): Promise<Coordinates> => {
+export const getLocation = async (city: string | undefined) => {
   const token = await getApiKey(TOKEN_DICTIONARY.token);
   const url = `${baseLocationUrl}?q=${city}&limit=1&appid=${token}&lang=${lang}`;
   const response = await axios.get(url);
+  if (response.data.length === 0) {
+    throw new Error('Не верно указан город');
+  }
   const { lat, lon } = response.data[0];
   return { lat: lat, lon: lon };
 };
@@ -25,3 +28,4 @@ export const getWeather = async (coordinates: Coordinates) => {
   const response = await axios.get(url);
   return response.data;
 };
+

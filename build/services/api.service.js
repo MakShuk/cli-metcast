@@ -13,10 +13,13 @@ const baseWeatherUrl = 'https://api.openweathermap.org/data/2.5/weather';
 const baseLocationUrl = 'https://api.openweathermap.org/geo/1.0/direct';
 const lang = 'ru';
 const units = 'metric';
-export const getLocation = (city = 'Murmansk') => __awaiter(void 0, void 0, void 0, function* () {
+export const getLocation = (city) => __awaiter(void 0, void 0, void 0, function* () {
     const token = yield getApiKey(TOKEN_DICTIONARY.token);
     const url = `${baseLocationUrl}?q=${city}&limit=1&appid=${token}&lang=${lang}`;
     const response = yield axios.get(url);
+    if (response.data.length === 0) {
+        throw new Error('Не верно указан город');
+    }
     const { lat, lon } = response.data[0];
     return { lat: lat, lon: lon };
 });
