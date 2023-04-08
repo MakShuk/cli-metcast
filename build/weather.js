@@ -66,5 +66,6 @@ const initCLI = () => __awaiter(void 0, void 0, void 0, function* () {
         return;
     }
     getForcast();
+    return;
 });
 initCLI();

@@ -61,6 +61,7 @@ const initCLI = async () => {
     return;
   }
   getForcast();
+  return;
 };
 
 initCLI();
